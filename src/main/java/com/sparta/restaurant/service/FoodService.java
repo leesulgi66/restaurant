@@ -21,7 +21,7 @@ public class FoodService {
 
     @Transactional
     public void checkNamePrice(Restaurant restaurantId, List<FoodRequestDto> foodRequestDto) {
-        HashSet<String> setFoods = new HashSet<String>();
+        HashSet<String> setFoods = new HashSet<>();
         for (FoodRequestDto food : foodRequestDto) {
             setFoods.add(food.getName()); //입력받은 음식을 set함수로 셋팅
         }
@@ -44,10 +44,12 @@ public class FoodService {
             if(price > 1000000){
                 throw new IllegalArgumentException("최대 사용가능한 가격을 입력 해 주세요.");
             }
+
             Food food1 = new Food(food, restaurantId);
 
             foodRepository.save(food1);
         }
+
     }
 
     public boolean nameBooleanCheck (Restaurant restaurantId, List<FoodRequestDto> foodRequestDto){

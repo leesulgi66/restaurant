@@ -11,7 +11,12 @@ import javax.persistence.*;
 @Getter
 
 public class Restaurant {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@ID
+    //@Column(name = "id", nullable = false, unique = true)
+    //private String username;
+    //ID를 인조키로 사용 할 때. (id = username)
+
+    @GeneratedValue(strategy = GenerationType.AUTO) //자연키 생성
     @Id
     private Long id;
 
