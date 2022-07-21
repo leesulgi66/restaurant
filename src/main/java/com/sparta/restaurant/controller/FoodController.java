@@ -1,7 +1,6 @@
 package com.sparta.restaurant.controller;
 
-import com.sparta.restaurant.dto.FoodRequestDto;
-import com.sparta.restaurant.dto.RestaurantDto;
+import com.sparta.restaurant.dto.FoodDto;
 import com.sparta.restaurant.model.Food;
 import com.sparta.restaurant.model.Restaurant;
 import com.sparta.restaurant.repository.FoodRepository;
@@ -26,7 +25,7 @@ public class FoodController {
     }
 
     @PostMapping("/restaurant/{restaurantId}/food/register")
-    public void registerFood(@PathVariable Restaurant restaurantId,@RequestBody List<FoodRequestDto> foodRequestDto){
-        foodService.checkNamePrice(restaurantId, foodRequestDto);
+    public void registerFood(@PathVariable Restaurant restaurantId,@RequestBody List<FoodDto> foodDto){
+        foodService.checkNamePrice(restaurantId, foodDto);
     }
 }

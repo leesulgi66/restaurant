@@ -1,6 +1,6 @@
 package com.sparta.restaurant.service;
 
-import com.sparta.restaurant.dto.FoodRequestDto;
+import com.sparta.restaurant.dto.FoodDto;
 import com.sparta.restaurant.model.Food;
 import com.sparta.restaurant.model.Restaurant;
 import com.sparta.restaurant.repository.FoodRepository;
@@ -20,20 +20,20 @@ public class FoodService {
     public final FoodRepository foodRepository;
 
     @Transactional
-    public void checkNamePrice(Restaurant restaurantId, List<FoodRequestDto> foodRequestDto) {
+    public void checkNamePrice(Restaurant restaurantId, List<FoodDto> foodDto) {
         HashSet<String> setFoods = new HashSet<>();
-        for (FoodRequestDto food : foodRequestDto) {
+        for (FoodDto food : foodDto) {
             setFoods.add(food.getName()); //입력받은 음식을 set함수로 셋팅
         }
         //음식 중복 확인
-        if (setFoods.size() != foodRequestDto.size()) {
+        if (setFoods.size() != foodDto.size()) {
             throw new IllegalArgumentException("중복된 음식을 등록 할 수 없습니다.");
         }
-        if (nameBooleanCheck(restaurantId, foodRequestDto)) {
+        if (nameBooleanCheck(restaurantId, foodDto)) {
             throw new IllegalArgumentException("이미 등록된 음식이 있습니다.");
         }
         //음식 입력값 확인
-        for (FoodRequestDto food : foodRequestDto){
+        for (FoodDto food : foodDto){
             int price = food.getPrice(); //가격 비교
             if(price%100 != 0) {
                 throw new IllegalArgumentException("100원 단위로 입력해 주세용.");
@@ -52,8 +52,8 @@ public class FoodService {
 
     }
 
-    public boolean nameBooleanCheck (Restaurant restaurantId, List<FoodRequestDto> foodRequestDto){
-        for (FoodRequestDto food : foodRequestDto) {
+    public boolean nameBooleanCheck (Restaurant restaurantId, List<FoodDto> foodDto){
+        for (FoodDto food : foodDto) {
             if (foodRepository.existsByNameAndRestaurant(food.getName(), restaurantId)) {
                 return true;
             }

@@ -1,16 +1,14 @@
 package com.sparta.restaurant.model;
 
-import com.sparta.restaurant.dto.FoodRequestDto;
+import com.sparta.restaurant.dto.FoodDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
 @Getter
-@Setter
 public class Food {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
@@ -26,9 +24,9 @@ public class Food {
     @JoinColumn(name = "RESTAURANT_ID", nullable = false)
     private Restaurant restaurant;
 
-    public Food(FoodRequestDto foodRequestDto, Restaurant restaurantId){
-        this.name = foodRequestDto.getName();
-        this.price = foodRequestDto.getPrice();
+    public Food(FoodDto foodDto, Restaurant restaurantId){
+        this.name = foodDto.getName();
+        this.price = foodDto.getPrice();
         this.restaurant = restaurantId;
     }
 }

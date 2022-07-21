@@ -404,6 +404,8 @@ class OrderIntegrationTest {
     @Getter
     @Setter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     static class OrderRequestDto {
         private Long restaurantId;
         private List<FoodOrderRequestDto> foods;
@@ -412,6 +414,8 @@ class OrderIntegrationTest {
     @Getter
     @Setter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     static class FoodOrderRequestDto {
         Long id;
         int quantity;
@@ -419,6 +423,8 @@ class OrderIntegrationTest {
 
     @Getter
     @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
     static class OrderDto {
         private String restaurantName;
         private List<FoodOrderDto> foods;
@@ -428,6 +434,8 @@ class OrderIntegrationTest {
 
     @Getter
     @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
     static class FoodOrderDto {
         String name;
         int quantity;
@@ -437,6 +445,8 @@ class OrderIntegrationTest {
     @Getter
     @Setter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     static class RestaurantDto {
         private Long id;
         private String name;

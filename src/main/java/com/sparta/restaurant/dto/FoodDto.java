@@ -10,7 +10,8 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class FoodRequestDto {
+public class FoodDto {
+    private Long id;
     private String name;
-    int price;
+    private int price;
 }
